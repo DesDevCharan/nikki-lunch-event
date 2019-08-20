@@ -1,0 +1,11 @@
+h1, h2 {
+  font-family: Lato;
+}
+#app {
+  width: 620px;
+  height: 720px;
+  padding: 0 10px;
+  background: lightgray;
+  box-sizing: border-box;
+  position: relative;
+}
