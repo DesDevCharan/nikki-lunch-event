@@ -1,7 +1,7 @@
 // Import stylesheets
 import './style.css';
 
-window.matchLunchEvent = function(arr) {
+window.matchLunchEvent = function (arr) {
   const me = arr[0];
   const minStart = me.start;
   const minEnd = me.end;
@@ -54,24 +54,27 @@ window.matchLunchEvent = function(arr) {
     } else if (hasLeft > 30) {
       cssString += `left:66%;`;
     }
-    cssString += checkForMatch(obj);
+    cssString += applyCSSForMatch(obj);
     const div = document.createElement("div");
-    div.style.cssText = cssString;
-    div.innerHTML = "Brilliant Lunch";
-    document.getElementById("app").appendChild(div);
-
-  }
-  function checkForMatch(obj) {
-    let cssString = `;`
-    if (matched.start === obj.start && matched.end === obj.end) {
-      cssString += `border-left: 10px solid green;`;
-    }
     if (obj.start === minStart && obj.end === minEnd) {
+      div.innerHTML = "Me";
       if (matched.max) {
         cssString += `border-left: 10px solid green;`;
       } else {
         cssString += `border-left: 10px solid black;`;
       }
+
+    } else {
+      div.innerHTML = "Brilliant Lunch";
+    }
+    div.style.cssText = cssString;
+    document.getElementById("app").appendChild(div);
+
+  }
+  function applyCSSForMatch(obj) {
+    let cssString = `;`
+    if (matched.start === obj.start && matched.end === obj.end) {
+      cssString += `border-left: 10px solid green;`;
     }
     return cssString;
   }
@@ -79,6 +82,6 @@ window.matchLunchEvent = function(arr) {
 
 
 
-matchLunchEvent([{ start: 225, end: 285 }, { start: 210, end: 270 }, { start: 180, end: 240 }, { start: 240, end: 300 }, { start: 300, end: 360 }, { start: 270, end: 330 }, { start: 270, end: 330 }, { start: 270, end: 330 }]);
+// matchLunchEvent([{ start: 225, end: 285 }, { start: 210, end: 270 }, { start: 180, end: 240 }, { start: 240, end: 300 }, { start: 300, end: 360 }, { start: 270, end: 330 }, { start: 270, end: 330 }, { start: 270, end: 330 }]);
 
-// matchLunchEvent([{start:225,end:285},{start:300,end:360},{start:180,end:240}]);
+matchLunchEvent([{start:225,end:285},{start:300,end:360},{start:180,end:240}]);
